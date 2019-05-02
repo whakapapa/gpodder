@@ -1,11 +1,3 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
-# Copyright 2016 Christoph Reiter
-#
-# This program is free software; you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation; either version 2 of the License, or
-# (at your option) any later version.
 
 """Creates simple Python .exe launchers for gui and cli apps
 
@@ -64,7 +56,6 @@ def get_launcher_code(entry_point):
 
     template = """\
 #include "Python.h"
-#define WIN32_LEAN_AND_MEAN
 #include <windows.h>
 #include <tchar.h>
 
@@ -177,33 +168,6 @@ END
     }
 
 
-def build_launcher(out_path, icon_path, file_desc, product_name, product_version,
-                   company_name, entry_point, is_gui):
-
-    src_ico = os.path.abspath(icon_path)
-    target = os.path.abspath(out_path)
-
-    file_version = product_version
-
-    dir_ = os.getcwd()
-    temp = tempfile.mkdtemp()
-    try:
-        os.chdir(temp)
-        with open("launcher.c", "w") as h:
-            h.write(get_launcher_code(entry_point))
-        shutil.copyfile(src_ico, "launcher.ico")
-        with open("launcher.rc", "w") as h:
-            h.write(get_resource_code(
-                os.path.basename(target), file_version, file_desc,
-                "launcher.ico", product_name, product_version, company_name))
-
-        build_resource("launcher.rc", "launcher.res")
-        build_exe("launcher.c", "launcher.res", is_gui, target)
-    finally:
-        os.chdir(dir_)
-        shutil.rmtree(temp)
-
-
 def main():
     argv = sys.argv
 
@@ -212,22 +176,6 @@ def main():
 
     company_name = "The gPodder Team"
     misc = os.path.dirname(os.path.realpath(__file__))
-
-    build_launcher(
-        os.path.join(target, "gpodder.exe"),
-        os.path.join(misc, "gpodder.ico"), "gPodder", "gPodder",
-        version, company_name, "gpodder_launch.gpodder:main", True)
-
-    build_launcher(
-        os.path.join(target, "gpodder-cmd.exe"),
-        os.path.join(misc, "gpodder.ico"), "gPodder", "gPodder",
-        version, company_name, "gpodder_launch.gpodder:main", False)
-
-    build_launcher(
-        os.path.join(target, "gpo.exe"),
-        os.path.join(misc, "gpo.ico"), "gPodder CLI", "gpo",
-        version, company_name, "gpodder_launch.gpo:main", False)
-
 
 if __name__ == "__main__":
     main()

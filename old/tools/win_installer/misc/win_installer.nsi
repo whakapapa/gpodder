@@ -107,10 +107,8 @@ Section "Install"
 
     ; Use this to make things faster for testing installer changes
     ;~ SetOutPath "$INSTDIR\bin"
-    ;~ File /r "mingw32\bin\*.exe"
 
     SetOutPath "$INSTDIR"
-    File /r "mingw32\*.*"
 
     ; Store installation folder
     WriteRegStr HKLM "${GPO_INSTDIR_KEY}" "${GPO_INSTDIR_VALUENAME}" $INSTDIR

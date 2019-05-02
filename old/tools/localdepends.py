@@ -1,13 +1,3 @@
-#!/usr/bin/python3
-#
-# gPodder dependency installer for running the CLI from the source tree
-#
-# Run "python localdepends.py" and it will download and inject dependencies,
-# so you only need a standard Python installation for the command-line utility
-#
-# Thomas Perl <thp.io/about>; 2012-02-11
-#
-
 import io
 import os
 import re

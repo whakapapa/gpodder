@@ -29,7 +29,6 @@ Setting Up the MSYS2 Environment
 
 * Download msys2 64-bit from https://msys2.github.io/
 * Follow instructions on https://msys2.github.io/
-* Execute ``C:\msys64\mingw32.exe``
 * Run ``pacman -S git`` to install git
 * Run ``git clone https://github.com/gpodder/gpodder.git``
 * Run ``cd gpodder/tools/win_installer`` to end up where this README exists.

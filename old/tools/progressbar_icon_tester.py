@@ -1,10 +1,3 @@
-#!/usr/bin/python3
-# Progressbar icon tester
-# Thomas Perl <thp.io/about>; 2012-02-05
-#
-# based on: Simple script to test gPodder's "pill" pixbuf implementation
-#           Thomas Perl <thp.io/about>; 2009-09-13
-
 import sys
 
 from gi.repository import Gtk

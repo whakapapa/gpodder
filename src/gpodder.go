@@ -20,16 +20,6 @@ from optparse import OptionParser
 
 logger = logging.getLogger(__name__)
 
-try:
-    import dbus
-    from dbus.mainloop.glib import DBusGMainLoop
-    have_dbus = True
-except ImportError:
-    print("""
-    Warning: python-dbus not found. Disabling D-Bus support.
-    """, file=sys.stderr)
-    have_dbus = False
-
 
 def main():
     # Paths to important files

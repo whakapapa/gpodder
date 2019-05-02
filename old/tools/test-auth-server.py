@@ -1,9 +1,3 @@
-#!/usr/bin/python3
-# -*- coding: utf-8 -*-
-# Simple HTTP web server for testing HTTP Authentication (see bug 1539)
-# from our crappy-but-does-the-job department
-# Thomas Perl <thp.io/about>; 2012-01-20
-
 import base64
 import datetime
 import hashlib
